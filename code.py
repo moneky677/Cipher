@@ -1,20 +1,17 @@
-while True:
-    message = input("Please enter your message\n>>>\n").strip()
-    letters = str.maketrans(
-    "abcdefghijklmnopqrstuvwxyz",
-    "qwertyuiopasdfghjklzxcvbnm"
+print("Welcome to the Cake Cipher!!!")
+choice = input("Would you like to cipher or decipher?\nd/c\n").lower().strip()
+while choice not in ['d','c']:
+    print("Not an option, please try again")
+    choice = input("Would you like to cipher or decipher?\nd/c\n").lower().strip()
+message = input("Please enter your message\n>>>\n").strip()
+if choice == 'c':
+   table = str.maketrans(
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890`~!@#$%^&*()-_=+[{]}\\|;:,<.>/?",
+        "mzqvnturswbxcpfyaokhdgijleEKCVDLBSNHFGMPOAWUQZRJTXIY3071986254;|/+.`[{<\\}]~>?-=^)@(#*:!$%,_&"
     )
-    capletter = str.maketrans(
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-    'FGHQWERTYUIOPASDJKLZXCVBNM'
+else:
+    table = str.maketrans(
+        "mzqvnturswbxcpfyaokhdgijleEKCVDLBSNHFGMPOAWUQZRJTXIY3071986254;|/+.`[{<\\}]~>?-=^)@(#*:!$%,_&",
+        "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890`~!@#$%^&*()-_=+[{]}\\|;:,<.>/?"
     )
-    numbers = str.maketrans(
-    '1234567890',
-    '6789012345'    
-    )
-    symbols = str.maketrans(
-    '`~!@#$%^&*()-_=+[{]}\|;:,<.>/?',
-    '^&*()-_=+[{]}|\:;,<>.?/~`!@#$%'
-    )
-    message = message.translate(letters).translate(capletter).translate(numbers).translate(symbols)
-    print(message)
+print(message.translate(table))
